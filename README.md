@@ -1,6 +1,7 @@
 # Devinhouse Módulo 3
 
 *[SP30 EX2](https://github.com/axdbertuol/suspects-catalog/tree/feat.jsonServer)*
+*[SP30 EX3](https://github.com/axdbertuol/suspects-catalog/tree/sp30.ex3)*
 
 
 
