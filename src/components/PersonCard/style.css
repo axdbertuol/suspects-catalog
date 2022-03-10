@@ -4,28 +4,26 @@
     width: 70% !important;
 }
 
-/*.card-row{*/
-/*    display: flex;*/
-/*    width: 80%;*/
-/*}*/
+.card-row{
+    padding: 15px 20px;
+}
 
 
 
 .card-stats{
     overflow: hidden;
     text-overflow: ellipsis;
-    padding: 20px;
+    max-height: 250px;
 
 }
 
 .card-img-container{
     display: flex;
-    padding-top: 20px;
     justify-content: center;
 }
 
 .card-img{
     object-fit: cover;
     max-width: 225px;
-    max-height: 225px;
+    max-height: 250px;
 }

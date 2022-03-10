@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Col, Container, Row } from 'react-bootstrap';
+import { Container } from 'react-bootstrap';
 import { ISuspect } from '../../utils/types';
 import { getAllSuspects } from '../../api/suspectsApi';
 import Headline from '../../components/Headline';
@@ -23,11 +23,8 @@ const SuspectListPage = () => {
 
   return (
     <Container>
-      <Row className="justify-content-md-center">
-        <Col md={4}>
-          <Headline text={'People'} />
-        </Col>
-      </Row>
+      <Headline text={'People'} />
+
       {!loading && <PersonList people={suspects} />}
     </Container>
   );

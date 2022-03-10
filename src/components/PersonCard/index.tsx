@@ -8,6 +8,8 @@ export interface IPropsCard {
   cardColor?: string;
 }
 const SuspectCard: React.FC<IPropsCard> = ({ data, cardColor }) => {
+  const keysToShow = ['name', 'id', 'age', 'balance', 'company', 'email'];
+  const map = new Map(data && Object.entries(data));
   return (
     <Container className={'card'}>
       <Row
@@ -22,26 +24,14 @@ const SuspectCard: React.FC<IPropsCard> = ({ data, cardColor }) => {
           />
         </Col>
         <Col md={8} sm={12} className={'card-stats'}>
-          {/* TODO improve list*/}
           <ListGroup variant={'flush'}>
-            <ListGroupItem>
-              <b>Name</b>: <i>{data?.name}</i>
-            </ListGroupItem>
-            <ListGroupItem>
-              <b>ID</b>: <i>{data?.id}</i>
-            </ListGroupItem>
-            <ListGroupItem>
-              <b>Age</b>: <i>{data?.age}</i>
-            </ListGroupItem>
-            <ListGroupItem>
-              <b>Balance</b>: <i>{data?.balance}</i>
-            </ListGroupItem>
-            <ListGroupItem>
-              <b>Company</b>: <i>{data?.company}</i>
-            </ListGroupItem>
-            <ListGroupItem>
-              <b>Email</b>: <i>{data?.email}</i>
-            </ListGroupItem>
+            {map &&
+              keysToShow.map((key, index) => (
+                <ListGroupItem key={'li' + index}>
+                  <b>{key[0].toUpperCase() + key.substring(1)}</b>: {''}
+                  <i>{map.get(key)}</i>
+                </ListGroupItem>
+              ))}
           </ListGroup>
         </Col>
       </Row>
