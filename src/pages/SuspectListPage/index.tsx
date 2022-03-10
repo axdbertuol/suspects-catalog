@@ -1,17 +1,34 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Col, Container, Row } from 'react-bootstrap';
+import SuspectCard from '../../components/SuspectCard';
+import { ISuspect } from '../../utils/types';
+import { getAllSuspects } from '../../api/suspectsApi';
+import Headline from '../../components/Headline';
 
 const SuspectListPage = () => {
+  const [suspects, setSuspects] = useState<Array<ISuspect>>([]);
+  const [loading, setLoading] = useState<boolean>(false);
+  useEffect(() => {
+    if (!suspects || suspects.length == 0) {
+      setLoading(true);
+      getAllSuspects()
+        .then((r) => {
+          setSuspects(r.data);
+        })
+        // eslint-disable-next-line no-console
+        .catch((error) => console.error(error))
+        .finally(() => setLoading(false));
+    }
+  }, [suspects]);
+
   return (
     <Container>
       <Row className="justify-content-md-center">
-        <Col sm={4}>1 of 2</Col>
+        <Col md={4}>
+          <Headline text={'People'} />
+        </Col>
       </Row>
-      <Row>
-        <Col>1 of 3</Col>
-        <Col>2 of 3</Col>
-        <Col>3 of 3</Col>
-      </Row>
+      {!loading && suspects.map((susp) => <SuspectCard data={susp} />)}
     </Container>
   );
 };

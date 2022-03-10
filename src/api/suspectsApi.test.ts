@@ -3,9 +3,9 @@ import {
   getSuspectById,
   editSuspect,
   saveSuspects,
-  deleteSuspect,
-  ISuspect
+  deleteSuspect
 } from './suspectsApi';
+import { ISuspect } from '../utils/types';
 
 // need json-server turned on
 test('gets all suspects', async () => {
