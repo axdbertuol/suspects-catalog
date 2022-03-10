@@ -7,7 +7,6 @@
 .card-stats{
     overflow: hidden;
     text-overflow: ellipsis;
-    /*margin: 10px 10px;*/
     padding: 20px;
 }
 

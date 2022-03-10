@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Col, Container, Row } from 'react-bootstrap';
-import SuspectCard from '../../components/SuspectCard';
+import Person from '../../components/Person';
 import { ISuspect } from '../../utils/types';
 import { getAllSuspects } from '../../api/suspectsApi';
 import Headline from '../../components/Headline';
@@ -28,7 +28,7 @@ const SuspectListPage = () => {
           <Headline text={'People'} />
         </Col>
       </Row>
-      {!loading && suspects.map((susp) => <SuspectCard data={susp} />)}
+      {!loading && suspects.map((susp) => <Person data={susp} />)}
     </Container>
   );
 };

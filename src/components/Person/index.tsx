@@ -3,7 +3,7 @@ import { Col, Container, ListGroup, ListGroupItem, Row } from 'react-bootstrap';
 import { ISuspect } from '../../utils/types';
 import './style.css';
 
-interface IPropsCard {
+export interface IPropsCard {
   data?: ISuspect;
 }
 const SuspectCard: React.FC<IPropsCard> = ({ data }) => {
