@@ -5,11 +5,15 @@ import './style.css';
 
 export interface IPropsCard {
   data?: ISuspect;
+  cardColor?: string;
 }
-const SuspectCard: React.FC<IPropsCard> = ({ data }) => {
+const SuspectCard: React.FC<IPropsCard> = ({ data, cardColor }) => {
   return (
     <Container className={'card'}>
-      <Row>
+      <Row
+        className={'card-row'}
+        style={{ backgroundColor: cardColor || 'none' }}
+      >
         <Col md={3} sm={12} className={'card-img-container'}>
           <img
             src={data?.picture}
@@ -17,7 +21,7 @@ const SuspectCard: React.FC<IPropsCard> = ({ data }) => {
             alt={"Suspect's portrait"}
           />
         </Col>
-        <Col md={9} sm={12} className={'card-stats'}>
+        <Col md={8} sm={12} className={'card-stats'}>
           {/* TODO improve list*/}
           <ListGroup variant={'flush'}>
             <ListGroupItem>

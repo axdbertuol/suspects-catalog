@@ -1,19 +1,27 @@
 .card{
     max-height: 400px;
-    width: 70%;
     margin-top: 15px;
+    width: 70% !important;
 }
+
+/*.card-row{*/
+/*    display: flex;*/
+/*    width: 80%;*/
+/*}*/
+
+
 
 .card-stats{
     overflow: hidden;
     text-overflow: ellipsis;
     padding: 20px;
+
 }
 
 .card-img-container{
     display: flex;
     padding-top: 20px;
-    justify-content: end;
+    justify-content: center;
 }
 
 .card-img{

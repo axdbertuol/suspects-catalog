@@ -10,7 +10,7 @@ const MainRouter = () => {
       <Header />
       <Routes>
         <Route path="/" element={<div>Home</div>} />
-        <Route path="/persons" element={<SuspectListPage />} />
+        <Route path="/people" element={<SuspectListPage />} />
         <Route path="/register" element={<SuspectRegisterPage />} />
         <Route path="/suspect">
           <Route path=":id" element={<SuspectDetailsPage />} />
