@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { Col, Container, Row } from 'react-bootstrap';
-import Person from '../../components/Person';
 import { ISuspect } from '../../utils/types';
 import { getAllSuspects } from '../../api/suspectsApi';
 import Headline from '../../components/Headline';
+import PersonList from '../../components/PersonList';
 
 const SuspectListPage = () => {
   const [suspects, setSuspects] = useState<Array<ISuspect>>([]);
@@ -28,7 +28,7 @@ const SuspectListPage = () => {
           <Headline text={'People'} />
         </Col>
       </Row>
-      {!loading && suspects.map((susp) => <Person data={susp} />)}
+      {!loading && <PersonList people={suspects} />}
     </Container>
   );
 };

@@ -18,6 +18,7 @@ const SuspectCard: React.FC<IPropsCard> = ({ data }) => {
           />
         </Col>
         <Col md={9} sm={12} className={'card-stats'}>
+          {/* TODO improve list*/}
           <ListGroup variant={'flush'}>
             <ListGroupItem>
               <b>Name</b>: <i>{data?.name}</i>
