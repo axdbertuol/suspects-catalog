@@ -8,7 +8,10 @@
     padding: 15px 20px;
 }
 
-
+.card-btns{
+    padding-right: 10px;
+    /*margin-right: 10px ;*/
+}
 
 .card-stats{
     overflow: hidden;

@@ -1,7 +1,16 @@
 import React from 'react';
-import { Col, Container, ListGroup, ListGroupItem, Row } from 'react-bootstrap';
+import {
+  Button,
+  ButtonGroup,
+  Col,
+  Container,
+  ListGroup,
+  ListGroupItem,
+  Row
+} from 'react-bootstrap';
 import { ISuspect } from '../../utils/types';
 import './style.css';
+import { useNavigate } from 'react-router-dom';
 
 export interface IPropsCard {
   data?: ISuspect;
@@ -10,6 +19,9 @@ export interface IPropsCard {
 const SuspectCard: React.FC<IPropsCard> = ({ data, cardColor }) => {
   const keysToShow = ['name', 'id', 'age', 'balance', 'company', 'email'];
   const map = new Map(data && Object.entries(data));
+
+  const navigate = useNavigate();
+
   return (
     <Container className={'card'}>
       <Row
@@ -33,6 +45,13 @@ const SuspectCard: React.FC<IPropsCard> = ({ data, cardColor }) => {
                 </ListGroupItem>
               ))}
           </ListGroup>
+        </Col>
+        <Col md={1} sm={12} className={'card-btns'}>
+          <ButtonGroup vertical>
+            <Button size="sm" onClick={() => navigate(`/person/${data?.id}`)}>
+              Details
+            </Button>
+          </ButtonGroup>
         </Col>
       </Row>
     </Container>
