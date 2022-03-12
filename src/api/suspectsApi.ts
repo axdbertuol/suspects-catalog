@@ -13,7 +13,7 @@ export const getSuspectById = async (
   return axiosInstance.get(`/suspects?id=${id}`);
 };
 
-export const saveSuspects = async (
+export const saveSuspect = async (
   suspect: ISuspect
 ): Promise<AxiosResponse<Array<ISuspect>, undefined>> => {
   return axiosInstance.post('/suspects', suspect);

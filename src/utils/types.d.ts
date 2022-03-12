@@ -1,6 +1,8 @@
+import { ChangeEvent } from 'react';
+
 export interface ISuspect {
   id?: string;
-  balance?: string;
+  balance?: string | number;
   picture?: string;
   age?: number;
   eyeColor?: string;
@@ -11,8 +13,16 @@ export interface ISuspect {
   phone?: string;
   address?: string;
   about?: string;
-  registered?: string;
+  registered?: string | boolean;
   latitude?: number;
   longitude?: number;
   participants?: Array<ISuspect>;
+}
+
+export interface IOnChange {
+  onChange: React.FormEvent<HTMLInputElement>;
+}
+
+export interface IOnSubmit {
+  onSubmit: React.FormEvent<HTMLInputElement>;
 }

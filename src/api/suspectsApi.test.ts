@@ -2,7 +2,7 @@ import {
   getAllSuspects,
   getSuspectById,
   editSuspect,
-  saveSuspects,
+  saveSuspect,
   deleteSuspect
 } from './suspectsApi';
 import { ISuspect } from '../utils/types';
@@ -21,6 +21,6 @@ test('save suspects', async () => {
   const newSuspect: ISuspect = {
     name: 'john'
   };
-  const response = await saveSuspects(newSuspect);
+  const response = await saveSuspect(newSuspect);
   expect(response.status).toBe(201);
 }, 10000);
