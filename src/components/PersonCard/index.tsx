@@ -18,7 +18,7 @@ export interface IPropsCard {
 }
 const SuspectCard: React.FC<IPropsCard> = ({ data, cardColor }) => {
   const keysToShow = ['name', 'id', 'age', 'balance', 'company', 'email'];
-  const map = new Map(data && Object.entries(data));
+  const map = new Map<string, string | number>(data && Object.entries(data));
 
   const navigate = useNavigate();
 
@@ -37,13 +37,12 @@ const SuspectCard: React.FC<IPropsCard> = ({ data, cardColor }) => {
         </Col>
         <Col md={8} sm={12} className={'card-stats'}>
           <ListGroup variant={'flush'}>
-            {map &&
-              keysToShow.map((key, index) => (
-                <ListGroupItem key={'li' + index}>
-                  <b>{key[0].toUpperCase() + key.substring(1)}</b>: {''}
-                  <i>{map.get(key)}</i>
-                </ListGroupItem>
-              ))}
+            {keysToShow.map((key, index) => (
+              <ListGroupItem key={'li' + index}>
+                <b>{key[0].toUpperCase() + key.substring(1)}</b>: {''}
+                <i>{map.get(key)}</i>
+              </ListGroupItem>
+            ))}
           </ListGroup>
         </Col>
         <Col md={1} sm={12} className={'card-btns'}>

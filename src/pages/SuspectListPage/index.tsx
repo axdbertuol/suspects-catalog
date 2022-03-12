@@ -8,6 +8,7 @@ import PersonList from '../../components/PersonList';
 const SuspectListPage = () => {
   const [suspects, setSuspects] = useState<Array<ISuspect>>([]);
   const [loading, setLoading] = useState<boolean>(false);
+
   useEffect(() => {
     if (!suspects || suspects.length == 0) {
       setLoading(true);
@@ -24,7 +25,6 @@ const SuspectListPage = () => {
   return (
     <Container>
       <Headline text={'People'} />
-
       {!loading && <PersonList people={suspects} />}
     </Container>
   );
