@@ -1,6 +1,6 @@
 export interface ISuspect {
   id?: string;
-  balance?: string;
+  balance?: string | number;
   picture?: string;
   age?: number;
   eyeColor?: string;
@@ -11,7 +11,7 @@ export interface ISuspect {
   phone?: string;
   address?: string;
   about?: string;
-  registered?: string;
+  registered?: string | boolean;
   latitude?: number;
   longitude?: number;
   participants?: Array<ISuspect>;
