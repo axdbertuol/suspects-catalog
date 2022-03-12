@@ -8,7 +8,7 @@ export const getAllSuspects = async (): Promise<
   return axiosInstance.get('/suspects');
 };
 export const getSuspectById = async (
-  id: string
+  id: string | undefined
 ): Promise<AxiosResponse<Array<ISuspect>, undefined>> => {
   return axiosInstance.get(`/suspects?id=${id}`);
 };
