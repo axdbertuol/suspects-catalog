@@ -52,7 +52,7 @@ const PersonDetails: React.FC<IPersonDetailsProps> = ({ data }) => {
       </Row>
       <Row>
         <Col sm={12}>
-          <Tab.Container id="left-tabs-example" defaultActiveKey="first">
+          <Tab.Container defaultActiveKey="first">
             <Row>
               <Col sm={3}>
                 <Nav variant="pills" className="flex-column">

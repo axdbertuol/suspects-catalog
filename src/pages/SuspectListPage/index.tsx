@@ -4,10 +4,12 @@ import { ISuspect } from '../../utils/types';
 import { getAllSuspects } from '../../api/suspectsApi';
 import Headline from '../../components/Headline';
 import PersonList from '../../components/PersonList';
+import { useNavigate } from 'react-router-dom';
 
 const SuspectListPage = () => {
   const [suspects, setSuspects] = useState<Array<ISuspect>>([]);
   const [loading, setLoading] = useState<boolean>(false);
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (!suspects || suspects.length == 0) {
@@ -25,7 +27,7 @@ const SuspectListPage = () => {
   return (
     <Container>
       <Headline text={'People'} />
-      {!loading && <PersonList people={suspects} />}
+      {!loading && <PersonList navigate={navigate} people={suspects} />}
     </Container>
   );
 };
