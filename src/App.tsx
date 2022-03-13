@@ -3,7 +3,6 @@ import './App.css';
 import MainRouter from './routes/MainRouter';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { DefaultTheme, ThemeProvider } from 'react-jss';
-import { Jss, JssOptions, JssStyle, JssValue } from 'jss';
 
 export interface ITheme extends DefaultTheme {
   color: {
@@ -19,9 +18,10 @@ const lightTheme: ITheme = {
   color: {
     primary: 'black',
     secondary: 'white',
-    tertiary: 'darkblue',
+    tertiary: 'aliceblue',
     gray05: 'rgba(0,0,0,.05)',
     gray01: 'rgba(0,0,0,.01)'
+    // gray1: 'rgba(0,0,0,.01)'
   }
 };
 
