@@ -35,8 +35,7 @@ const useStyles = createUseStyles((theme: ITheme) => ({
     }
   },
   selectedNavItem: {
-    backgroundColor: theme.color.gray05,
-    animation: '$pulse'
+    backgroundColor: theme.color.gray05
   },
   navLink: {
     textDecoration: 'none',

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Col, Container, Row } from 'react-bootstrap';
-import { IOnSubmit, ISuspect as IRegisterFormValues } from '../../utils/types';
+import { ISuspect as IRegisterFormValues } from '../../utils/types';
 import { saveSuspect } from '../../api/suspectsApi';
 import PersonForm from '../../components/PersonForm';
 

@@ -18,7 +18,7 @@ const lightTheme: ITheme = {
   color: {
     primary: 'black',
     secondary: 'white',
-    tertiary: 'aliceblue',
+    tertiary: 'midnightblue',
     gray05: 'rgba(0,0,0,.05)',
     gray01: 'rgba(0,0,0,.01)'
     // gray1: 'rgba(0,0,0,.01)'
