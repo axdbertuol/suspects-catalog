@@ -5,6 +5,7 @@ import { ISuspect as IRegisterFormValues } from '../../utils/types';
 import './style.css';
 import { Button, Col, Form, Row } from 'react-bootstrap';
 import FormField from '../PersonFormField';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 interface IPersonFormProps {
   handleSave: (values: IRegisterFormValues) => void;

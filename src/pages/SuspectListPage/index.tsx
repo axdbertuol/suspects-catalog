@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Container } from 'react-bootstrap';
+import { Container } from './styles';
 import { ISuspect } from '../../utils/types';
 import { getAllSuspects } from '../../api/suspectsApi';
 import Headline from '../../components/Headline';

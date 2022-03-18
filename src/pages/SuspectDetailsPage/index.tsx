@@ -13,15 +13,10 @@ const SuspectDetailsPage = () => {
   const params = useParams();
 
   useEffect(() => {
-    // eslint-disable-next-line no-debugger
     if (!suspect) {
-      // eslint-disable-next-line no-debugger
-      console.log('passei');
       setLoading(true);
       getSuspectById(params.id)
         .then((response) => {
-          // eslint-disable-next-line no-debugger
-          console.log('response', response);
           if (response.data[0]) {
             setSuspect(response.data[0]);
           }

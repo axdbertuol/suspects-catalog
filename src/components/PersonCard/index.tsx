@@ -2,17 +2,19 @@ import React from 'react';
 
 import { ISuspect } from '../../utils/types';
 import { NavigateFunction } from 'react-router-dom';
-import { ITheme } from '../../App';
+
 import {
-  Button,
-  ButtonGroup,
-  Col,
-  Container,
-  ListGroup,
-  ListGroupItem,
-  Row
-} from 'react-bootstrap';
-import useStyles from './useStyles';
+  CardContainer,
+  CardContentContainer,
+  CardImg,
+  CardImgContainer,
+  CardUList,
+  CardUListItem,
+  PropertyName,
+  PropertyValue,
+  BtnsContainer,
+  BtnDetails
+} from './styles';
 
 export interface IPropsCard {
   data?: ISuspect;
@@ -20,52 +22,50 @@ export interface IPropsCard {
   cardStatsBgColor?: string;
   navigate?: NavigateFunction;
   maxHeight?: string;
-  theme?: ITheme;
   imageHeight?: string;
   imageWidth?: string;
 }
 
-const PersonCard: React.FC<IPropsCard> = (props) => {
-  const { data, cardColor, navigate } = props;
+const PersonCard: React.FC<IPropsCard> = ({
+  data,
+  cardColor,
+  navigate,
+  imageHeight = '225px',
+  imageWidth = '225px'
+}) => {
   const keysToShow = ['name', 'id', 'age', 'balance', 'company', 'email'];
-  const map = new Map<string, string | number>(data && Object.entries(data));
-  const classes = useStyles({ ...props });
-
+  const dataMap = data && new Map(Object.entries(data));
   return (
-    <Container className={classes.card}>
-      <Row
-        className={classes.cardRow}
-        style={{ backgroundColor: cardColor || 'none' }}
-      >
-        <Col md={3} sm={12} className={classes.cardImgContainer}>
-          <img
+    <CardContainer>
+      <CardContentContainer>
+        <CardImgContainer>
+          <CardImg
+            height={imageHeight}
+            width={imageWidth}
             src={data?.picture}
-            className={classes.cardImg}
-            alt={"Suspect's portrait"}
           />
-        </Col>
-        <Col md={8} sm={12} className={classes.cardStats}>
-          <ListGroup variant={'flush'}>
-            {keysToShow.map((key, index) => (
-              <ListGroupItem key={'li' + index} className={classes.cardItem}>
-                <b>{key[0].toUpperCase() + key.substring(1)}</b>: {''}
-                <i>{map.get(key)}</i>
-              </ListGroupItem>
-            ))}
-          </ListGroup>
-        </Col>
-        <Col md={1} sm={12} className={classes.cardBtns}>
-          <ButtonGroup vertical>
-            <Button
-              size="sm"
-              onClick={() => (navigate ? navigate(`/person/${data?.id}`) : '')}
-            >
-              Details
-            </Button>
-          </ButtonGroup>
-        </Col>
-      </Row>
-    </Container>
+        </CardImgContainer>
+        <CardUList>
+          {dataMap &&
+            keysToShow.map((key, index) => {
+              return (
+                <CardUListItem key={index + 'litem'}>
+                  <PropertyName>{key.toUpperCase()}</PropertyName>
+                  <PropertyValue>
+                    <i>{dataMap.get(key)}</i>
+                  </PropertyValue>
+                </CardUListItem>
+              );
+            })}
+        </CardUList>
+      </CardContentContainer>
+      <BtnsContainer>
+        <BtnDetails>Details</BtnDetails>
+        <BtnDetails>Details</BtnDetails>
+        <BtnDetails>Details</BtnDetails>
+        <BtnDetails>Details</BtnDetails>
+      </BtnsContainer>
+    </CardContainer>
   );
 };
 

@@ -1,23 +1,32 @@
-import { Container, Nav, Navbar } from 'react-bootstrap';
-import { NavigateFunction, useNavigate } from 'react-router-dom';
+import { ThemeContext } from 'styled-components';
+import { useContext } from 'react';
+import {
+  Nav,
+  NavLink,
+  NavBtnLink,
+  NavBtn,
+  HeaderContainer,
+  NavMenu,
+  Bars
+} from './styles';
 
 const Header = () => {
-  const navigate: NavigateFunction = useNavigate();
+  const { colors, title } = useContext(ThemeContext);
   return (
-    <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
-      <Container>
-        <Navbar.Brand onClick={() => navigate('/')} className="mr-auto">
-          Suspects Catalog
-        </Navbar.Brand>
-        <Navbar.Toggle aria-controls="responsive-navbar-nav" />
-        <Navbar.Collapse id="responsive-navbar-nav">
-          <Nav className="me-auto">
-            <Nav.Link onClick={() => navigate('/people')}>People List</Nav.Link>
-            <Nav.Link onClick={() => navigate('/register')}>Register</Nav.Link>
-          </Nav>
-        </Navbar.Collapse>
-      </Container>
-    </Navbar>
+    <>
+      <Nav>
+        <Bars />
+
+        <NavMenu>
+          <NavLink to="/">Home</NavLink>
+          <NavLink to="/people">Suspects</NavLink>
+          <NavLink to="/register">Registration</NavLink>
+        </NavMenu>
+        <NavBtn>
+          <NavBtnLink to="/">Sign In</NavBtnLink>
+        </NavBtn>
+      </Nav>
+    </>
   );
 };
 

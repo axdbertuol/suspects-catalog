@@ -1,33 +1,20 @@
 import React from 'react';
-import './App.css';
 import MainRouter from './routes/MainRouter';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import { DefaultTheme, ThemeProvider } from 'react-jss';
-
-export interface ITheme extends DefaultTheme {
-  color: {
-    primary: string;
-    secondary: string;
-    tertiary: string;
-    gray05: string;
-    gray01: string;
-  };
-}
-
-const lightTheme: ITheme = {
-  color: {
-    primary: 'black',
-    secondary: 'white',
-    tertiary: 'midnightblue',
-    gray05: 'rgba(0,0,0,.05)',
-    gray01: 'rgba(0,0,0,.01)'
-    // gray1: 'rgba(0,0,0,.01)'
-  }
-};
+import { DefaultTheme, ThemeProvider } from 'styled-components';
+import GlobalStyle from './styles/global';
+import usePersistedState from './utils/usePersistedState';
+import main from './styles/themes/main';
+import dark from './styles/themes/dark';
 
 function App() {
+  const [theme, setTheme] = usePersistedState<DefaultTheme>('theme', main);
+
+  const toggleTheme = () => {
+    setTheme(theme.title === 'main' ? main : dark);
+  };
   return (
-    <ThemeProvider theme={lightTheme}>
+    <ThemeProvider theme={theme}>
+      <GlobalStyle />
       <MainRouter />
     </ThemeProvider>
   );
