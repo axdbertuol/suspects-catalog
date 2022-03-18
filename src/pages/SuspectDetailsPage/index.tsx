@@ -2,8 +2,8 @@ import React, { useEffect, useState } from 'react';
 import { useNavigationType, useParams } from 'react-router-dom';
 import { ISuspect } from '../../utils/types';
 import { getSuspectById } from '../../api/suspectsApi';
-import { Container } from 'react-bootstrap';
 import PersonDetails from '../../components/PersonDetails';
+import { Container } from './styles';
 
 const SuspectDetailsPage = () => {
   const [suspect, setSuspect] = useState<ISuspect | undefined>(undefined);

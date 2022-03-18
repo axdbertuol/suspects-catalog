@@ -2,24 +2,42 @@ import styled from 'styled-components';
 import { Container as MContainer } from '../../styles/common';
 
 export const Container = styled(MContainer)`
-  margin-top: 2rem;
-  bottom: 10rem;
+  flex-direction: column;
+  width: 270px;
+  min-height: 700px;
+  background-color: ${(props) => props.theme.colors.primary.main};
 `;
 
 export const ImgContainer = styled(MContainer)`
   justify-content: center;
-  bottom: 1rem;
+  margin: 1rem auto;
+  width: 225px;
+  overflow: hidden;
+  background-color: transparent;
 `;
 
-export const NavContainer = styled(MContainer)`
+export const NavContainer = styled.div`
+  display: flex;
   flex-direction: row;
+  //margin: 1rem auto;
+`;
+
+export const TabContentContainer = styled(MContainer)`
+  width: 70%;
+  margin-left: auto;
+  margin-right: auto;
+  flex-direction: column;
+  align-self: stretch;
+  background-color: ${(props) => props.theme.colors.primary.main};
 `;
 
 export const NavTabsList = styled.ul`
   list-style: none;
   display: flex;
   flex-direction: column;
-  padding: unset;
+  padding: 10px;
+  width: 100%;
+  letter-spacing: 0.8px;
 `;
 
 interface NavTabsItemProps {
@@ -27,16 +45,18 @@ interface NavTabsItemProps {
 }
 
 export const NavTabsItem = styled.li<NavTabsItemProps>`
-  color: ${(props) => props.theme.colors.text};
-  border-bottom: 1px solid salmon;
+  color: ${(props) =>
+    props.isActive
+      ? props.theme.colors.secondary
+      : props.theme.colors.darkGray};
+
   display: flex;
-  align-items: center;
+  justify-content: center;
   text-decoration: none;
   padding: 0 1rem;
-  height: 100%;
   cursor: pointer;
-  &.active {
-    color: ${(props) => props.theme.colors.secondary};
-    border-bottom: 1px solid blue;
-  }
+  margin-bottom: 10px;
+  font-size: ${(props) => (props.isActive ? '1.1rem' : '1rem')};
+  font-style: ${(props) => (props.isActive ? 'italic' : 'unset')};
+  transition: all 0.2s ease-in-out;
 `;

@@ -1,7 +1,6 @@
 import React from 'react';
 
 import { ISuspect } from '../../utils/types';
-import { NavigateFunction } from 'react-router-dom';
 
 import {
   CardContainer,
@@ -20,7 +19,6 @@ export interface IPropsCard {
   data?: ISuspect;
   cardColor?: string;
   cardStatsBgColor?: string;
-  navigate?: NavigateFunction;
   maxHeight?: string;
   imageHeight?: string;
   imageWidth?: string;
@@ -28,8 +26,6 @@ export interface IPropsCard {
 
 const PersonCard: React.FC<IPropsCard> = ({
   data,
-  cardColor,
-  navigate,
   imageHeight = '225px',
   imageWidth = '225px'
 }) => {
@@ -37,20 +33,19 @@ const PersonCard: React.FC<IPropsCard> = ({
   const dataMap = data && new Map(Object.entries(data));
   return (
     <CardContainer>
+      <CardImgContainer>
+        <CardImg height={imageHeight} width={imageWidth} src={data?.picture} />
+      </CardImgContainer>
+
       <CardContentContainer>
-        <CardImgContainer>
-          <CardImg
-            height={imageHeight}
-            width={imageWidth}
-            src={data?.picture}
-          />
-        </CardImgContainer>
         <CardUList>
           {dataMap &&
             keysToShow.map((key, index) => {
               return (
                 <CardUListItem key={index + 'litem'}>
-                  <PropertyName>{key.toUpperCase()}</PropertyName>
+                  <PropertyName>
+                    <p>{key.toUpperCase()}</p>
+                  </PropertyName>
                   <PropertyValue>
                     <i>{dataMap.get(key)}</i>
                   </PropertyValue>
@@ -58,15 +53,17 @@ const PersonCard: React.FC<IPropsCard> = ({
               );
             })}
         </CardUList>
+        <BtnsContainer>
+          <BtnDetails to={`/person/${data?.id}`}>D</BtnDetails>
+        </BtnsContainer>
       </CardContentContainer>
-      <BtnsContainer>
-        <BtnDetails>Details</BtnDetails>
-        <BtnDetails>Details</BtnDetails>
-        <BtnDetails>Details</BtnDetails>
-        <BtnDetails>Details</BtnDetails>
-      </BtnsContainer>
     </CardContainer>
   );
+};
+
+PersonCard.defaultProps = {
+  imageHeight: '225px',
+  imageWidth: '225px'
 };
 
 export default PersonCard;

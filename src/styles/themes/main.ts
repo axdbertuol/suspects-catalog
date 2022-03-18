@@ -2,7 +2,11 @@ export default {
   title: 'main',
 
   colors: {
-    primary: '#0A1045',
+    primary: {
+      dark: '#00204a',
+      main: '#005792',
+      light: '#d9faff'
+    },
     secondary: '#F0EFF4',
     darkGray: '#777',
     lightGray: '#CCC',

@@ -1,15 +1,13 @@
 import React, { useEffect, useState } from 'react';
-import { Container } from './styles';
+import { ListContainer, SubHeader } from './styles';
 import { ISuspect } from '../../utils/types';
 import { getAllSuspects } from '../../api/suspectsApi';
-import Headline from '../../components/Headline';
 import PersonList from '../../components/PersonList';
-import { useNavigate } from 'react-router-dom';
+import { Headline } from '../../styles/common';
 
 const SuspectListPage = () => {
   const [suspects, setSuspects] = useState<Array<ISuspect>>([]);
   const [loading, setLoading] = useState<boolean>(false);
-  const navigate = useNavigate();
 
   useEffect(() => {
     if (!suspects || suspects.length == 0) {
@@ -25,10 +23,22 @@ const SuspectListPage = () => {
   }, [suspects]);
 
   return (
-    <Container>
-      <Headline text={'People'} />
-      {!loading && <PersonList navigate={navigate} people={suspects} />}
-    </Container>
+    <>
+      <SubHeader>
+        <Headline>People</Headline>
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin posuere
+          a lectus ut lobortis. Praesent in arcu nibh. Lorem ipsum dolor sit
+          amet, consectetur adipiscing elit. Ut in cursus metus. Mauris quis
+          maximus dui. Donec erat nibh, varius volutpat ligula eget, dignissim
+          vulputate mauris. Morbi at risus ornare, ultrices sem ac, vehicula
+          orci.
+        </p>
+      </SubHeader>
+      <ListContainer>
+        {!loading && <PersonList people={suspects} />}
+      </ListContainer>
+    </>
   );
 };
 

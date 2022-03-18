@@ -1,10 +1,20 @@
 import styled from 'styled-components';
-import { Container as MContainer } from '../../styles/common';
+import { Container } from '../../styles/common';
 
-export const Container = styled(MContainer)`
-  margin: 0.8rem auto;
-  flex-flow: column wrap;
-  width: 70%;
-  box-shadow: rgba(0, 0, 0, 0.1) 0 4px 12px;
-  background-color: ${(props) => props.theme.colors.secondary};
+export const ListContainer = styled(Container)`
+  margin: 0 auto;
+  flex-flow: row wrap;
+  background-color: ${(props) => props.theme.colors.primary.light};
+`;
+
+export const SubHeader = styled(Container)`
+  flex-direction: column;
+  height: 200px;
+  width: 100%;
+  background-color: ${(props) => props.theme.colors.primary.light};
+  p {
+    text-align: center;
+    margin: 0 auto;
+    width: 50%;
+  }
 `;

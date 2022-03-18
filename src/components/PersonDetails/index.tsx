@@ -1,42 +1,55 @@
 import React, { useState } from 'react';
 import { ISuspect } from '../../utils/types';
 import Gallery from '../Gallery';
-import SimpleGallery from '../SimpleGallery';
 import PersonList from '../PersonList';
 import {
   Container,
   ImgContainer,
   NavContainer,
   NavTabsList,
-  NavTabsItem
+  NavTabsItem,
+  TabContentContainer
 } from './styles';
+import {
+  CardUList,
+  CardUListItem,
+  PropertyName,
+  PropertyValue
+} from '../PersonCard/styles';
+import PersonCard from '../PersonCard';
+import { Headline } from '../../styles/common';
 
 export interface IPersonDetailsProps {
   data?: ISuspect;
-  imgHeight?: string;
+  imageHeight?: string;
 }
 
 type EntryValue = string | number | object | never;
 
 const personalDetailsItens = (dataEntries?: [string, EntryValue][]) => (
-  <ul>
+  <CardUList>
     {dataEntries
       ?.filter(([k]) => k !== 'picture' && k !== 'participants')
       .map(([key, value], index) => {
         return (
-          <li key={'litem' + index}>
-            <b>{key[0].toUpperCase() + key.substring(1).toLowerCase()}</b>: {''}
-            <i>{`${value}`}</i>
-          </li>
+          <CardUListItem key={index + 'litem'}>
+            <PropertyName lightText>
+              <p>{key.toUpperCase()}</p>
+            </PropertyName>
+            <PropertyValue>
+              <i>{value}</i>
+            </PropertyValue>
+          </CardUListItem>
         );
       })}
-  </ul>
+  </CardUList>
 );
 
-const PersonDetails: React.FC<IPersonDetailsProps> = ({ data, imgHeight }) => {
+const PersonDetails: React.FC<IPersonDetailsProps> = ({
+  data,
+  imageHeight
+}) => {
   const dataEntries = data && Object.entries(data);
-  const dataMap = dataEntries && new Map(dataEntries);
-  const participants: Array<ISuspect> | undefined = data?.participants;
 
   const tabs = ['personal', 'pictures', 'participants'];
   const [activeTab, setActiveTab] = useState('personal');
@@ -47,22 +60,59 @@ const PersonDetails: React.FC<IPersonDetailsProps> = ({ data, imgHeight }) => {
   };
 
   return (
-    <Container>
-      <ImgContainer>
-        <img src={data?.picture} alt={'Person Avatar'} />
-      </ImgContainer>
-      <NavContainer>
-        <NavTabsList>
-          {tabs.map((tab) => (
-            <NavTabsItem onClick={() => handleClickTab(tab)}>
-              {tab[0].toUpperCase() + tab.substring(1).toLowerCase()}
-            </NavTabsItem>
-          ))}
-        </NavTabsList>
-      </NavContainer>
-      <Container>{activeTab === 'personal' && personalDetailsItens}</Container>
-    </Container>
+    <>
+      <Container>
+        <ImgContainer>
+          <img
+            src={data?.picture}
+            alt={'Person Avatar'}
+            height={imageHeight}
+            width={imageHeight}
+          />
+        </ImgContainer>
+        <NavContainer>
+          <NavTabsList>
+            {tabs.map((tab, index) => (
+              <NavTabsItem
+                key={tab + index + 'tab'}
+                onClick={() => handleClickTab(tab)}
+                isActive={activeTab === tab}
+              >
+                {tab[0].toUpperCase() + tab.substring(1).toLowerCase()}
+              </NavTabsItem>
+            ))}
+          </NavTabsList>
+        </NavContainer>
+      </Container>
+      <TabContentContainer>
+        <Headline>
+          {activeTab[0].toUpperCase() + activeTab.substring(1).toLowerCase()}
+        </Headline>
+        <hr />
+        {activeTab === 'personal' && personalDetailsItens(dataEntries)}
+        {activeTab === 'pictures' && (
+          <Gallery
+            pictures={data?.picture ? [data.picture, data.picture] : []}
+          />
+        )}
+        {activeTab === 'participants' && (
+          <div
+            style={{
+              display: 'flex',
+              flexDirection: 'column',
+              margin: '0 auto'
+            }}
+          >
+            <PersonList people={data?.participants} />
+          </div>
+        )}
+      </TabContentContainer>
+    </>
   );
+};
+
+PersonCard.defaultProps = {
+  imageHeight: '225px'
 };
 
 export default PersonDetails;

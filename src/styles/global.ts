@@ -12,6 +12,6 @@ export default createGlobalStyle`
     /*16px = 1rem (base)*/
     font-size: 0.875rem;
     color: ${(props) => props.theme.colors.text};
-    font-family: sans-serif;
+    font-family: Raleway, sans-serif;
   }
 `;

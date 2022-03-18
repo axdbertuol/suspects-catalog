@@ -6,10 +6,9 @@ import { ThemeContext } from 'styled-components';
 
 interface IPersonListProps {
   people?: Array<ISuspect>;
-  navigate?: NavigateFunction;
 }
 
-const PersonList: React.FC<IPersonListProps> = ({ people, navigate }) => {
+const PersonList: React.FC<IPersonListProps> = ({ people }) => {
   const { colors, title } = useContext(ThemeContext);
 
   const memoizedMap = useMemo(
@@ -17,14 +16,7 @@ const PersonList: React.FC<IPersonListProps> = ({ people, navigate }) => {
       people &&
       people.map((person, index) => {
         const color: string = index % 2 == 0 ? 'gray' : 'black';
-        return (
-          <PersonCard
-            navigate={navigate}
-            key={person.id}
-            data={person}
-            cardColor={color}
-          />
-        );
+        return <PersonCard key={person.id} data={person} cardColor={color} />;
       }),
     people
   );

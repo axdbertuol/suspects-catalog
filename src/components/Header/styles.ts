@@ -1,25 +1,25 @@
 import styled from 'styled-components';
 import { FaBars } from 'react-icons/fa';
 import { NavLink as Link } from 'react-router-dom';
-import { Container } from '../../styles/common';
-
-export const HeaderContainer = styled(Container)`
-  height: 60px;
-  align-items: center;
-  justify-content: space-between;
-  padding: 0 30px;
-`;
 
 export const Nav = styled.nav`
   height: 85px;
+
   display: flex;
   justify-content: space-between;
-  padding: 0.2rem calc((100vw - 1000px) / 2);
   z-index: 12;
-  background-color: ${(props) => props.theme.colors.primary};
+  background: rgb(77, 74, 74);
+  background: linear-gradient(
+    90deg,
+    rgba(77, 74, 74, 1) 0%,
+    rgba(110, 128, 147, 1) 0%,
+    rgba(0, 87, 146, 1) 100%,
+    rgba(217, 250, 255, 1) 100%
+  );
 `;
 
 export const NavLink = styled(Link)`
+  font-size: 1rem;
   color: ${(props) => props.theme.colors.secondary};
   display: flex;
   align-items: center;
@@ -28,8 +28,13 @@ export const NavLink = styled(Link)`
   height: 100%;
   cursor: pointer;
   &.active {
-    font-style: italic;
-    font-size: 1.05rem;
+    transition: all 0.1s ease-in-out;
+    box-shadow: rgba(0, 0, 0, 0.2) 0 4px 12px;
+  }
+  &:hover {
+    transition: all 0.2s ease-in-out;
+    color: ${(props) => props.theme.colors.secondary};
+    box-shadow: rgba(0, 0, 0, 0.2) 0 4px 12px;
   }
 `;
 
@@ -50,17 +55,28 @@ export const Bars = styled(FaBars)`
 export const NavMenu = styled.div`
   display: flex;
   align-items: center;
-  margin-right: -24px;
+  width: 100%;
+  margin-left: 5rem;
+  //margin-right: -24px;
 
   @media screen and (max-width: 768px) {
     display: none;
   }
 `;
-
-export const NavBtn = styled.nav`
+export const RightBtns = styled.div`
   display: flex;
   align-items: center;
-  margin-right: 24px;
+  margin-left: auto;
+  @media screen and (max-width: 768px) {
+    display: none;
+  }
+`;
+
+export const NavBtns = styled.nav`
+  display: flex;
+  //align-items: center;
+  margin-right: 10rem;
+  margin-left: auto;
   @media screen and (max-width: 768px) {
     display: none;
   }
@@ -70,7 +86,6 @@ export const NavBtnLink = styled(Link)`
   border-radius: 4px;
   background: ${(props) => props.theme.colors.secondary};
   padding: 10px 22px;
-  color: ${(props) => props.theme.colors.primary};
   outline: none;
   border: none;
   cursor: pointer;
