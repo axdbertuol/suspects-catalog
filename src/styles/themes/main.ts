@@ -7,7 +7,7 @@ export default {
       main: '#005792',
       light: '#d9faff'
     },
-    secondary: '#F0EFF4',
+    secondary: 'rgba(0, 0, 0, 0.05)',
     darkGray: '#777',
     lightGray: '#CCC',
     background: '#f5f5f5',

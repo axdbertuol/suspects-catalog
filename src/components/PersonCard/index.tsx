@@ -26,8 +26,8 @@ export interface IPropsCard {
 
 const PersonCard: React.FC<IPropsCard> = ({
   data,
-  imageHeight = '225px',
-  imageWidth = '225px'
+  imageHeight = '150px',
+  imageWidth = '150px'
 }) => {
   const keysToShow = ['name', 'id', 'age', 'balance', 'company', 'email'];
   const dataMap = data && new Map(Object.entries(data));
@@ -54,7 +54,7 @@ const PersonCard: React.FC<IPropsCard> = ({
             })}
         </CardUList>
         <BtnsContainer>
-          <BtnDetails to={`/person/${data?.id}`}>D</BtnDetails>
+          <BtnDetails to={`/person/${data?.id}`}>Details</BtnDetails>
         </BtnsContainer>
       </CardContentContainer>
     </CardContainer>
@@ -62,8 +62,8 @@ const PersonCard: React.FC<IPropsCard> = ({
 };
 
 PersonCard.defaultProps = {
-  imageHeight: '225px',
-  imageWidth: '225px'
+  imageHeight: '150px',
+  imageWidth: '150px'
 };
 
 export default PersonCard;

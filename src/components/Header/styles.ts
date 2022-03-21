@@ -8,7 +8,6 @@ export const Nav = styled.nav`
   display: flex;
   justify-content: space-between;
   z-index: 12;
-  background: rgb(77, 74, 74);
   background: linear-gradient(
     90deg,
     rgba(77, 74, 74, 1) 0%,
@@ -19,21 +18,22 @@ export const Nav = styled.nav`
 `;
 
 export const NavLink = styled(Link)`
-  font-size: 1rem;
-  color: ${(props) => props.theme.colors.secondary};
+  color: ${(props) => props.theme.colors.lightGray};
   display: flex;
   align-items: center;
   text-decoration: none;
   padding: 0 1rem;
   height: 100%;
   cursor: pointer;
+  font-size: 1.8rem;
+
   &.active {
     transition: all 0.1s ease-in-out;
     box-shadow: rgba(0, 0, 0, 0.2) 0 4px 12px;
   }
   &:hover {
     transition: all 0.2s ease-in-out;
-    color: ${(props) => props.theme.colors.secondary};
+    color: ${(props) => props.theme.colors.text};
     box-shadow: rgba(0, 0, 0, 0.2) 0 4px 12px;
   }
 `;
@@ -57,7 +57,6 @@ export const NavMenu = styled.div`
   align-items: center;
   width: 100%;
   margin-left: 5rem;
-  //margin-right: -24px;
 
   @media screen and (max-width: 768px) {
     display: none;
@@ -74,9 +73,10 @@ export const RightBtns = styled.div`
 
 export const NavBtns = styled.nav`
   display: flex;
-  //align-items: center;
   margin-right: 10rem;
   margin-left: auto;
+  font-size: 1.2rem;
+
   @media screen and (max-width: 768px) {
     display: none;
   }
@@ -84,7 +84,7 @@ export const NavBtns = styled.nav`
 
 export const NavBtnLink = styled(Link)`
   border-radius: 4px;
-  background: ${(props) => props.theme.colors.secondary};
+  background: ${(props) => props.theme.colors.primary.light};
   padding: 10px 22px;
   outline: none;
   border: none;

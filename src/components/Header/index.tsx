@@ -10,22 +10,19 @@ import {
 
 const Header = () => {
   return (
-    <>
-      <Nav>
-        <Bars />
-
-        <NavMenu>
-          <NavLink to="/">Home</NavLink>
-          <NavLink to="/people">Suspects</NavLink>
-          <NavLink to="/register">Registration</NavLink>
-          <RightBtns style={{}}>
-            <NavBtns>
-              <NavBtnLink to="/">Sign In</NavBtnLink>
-            </NavBtns>
-          </RightBtns>
-        </NavMenu>
-      </Nav>
-    </>
+    <Nav>
+      <Bars />
+      <NavMenu>
+        <NavLink to="/">Home</NavLink>
+        <NavLink to="/people">Suspects</NavLink>
+        <NavLink to="/register">Registration</NavLink>
+        <RightBtns>
+          <NavBtns>
+            <NavBtnLink to="/">Sign In</NavBtnLink>
+          </NavBtns>
+        </RightBtns>
+      </NavMenu>
+    </Nav>
   );
 };
 

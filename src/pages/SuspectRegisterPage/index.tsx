@@ -3,6 +3,7 @@ import { Col, Container, Row } from 'react-bootstrap';
 import { ISuspect as IRegisterFormValues } from '../../utils/types';
 import { saveSuspect } from '../../api/suspectsApi';
 import PersonForm from '../../components/PersonForm';
+import { Headline } from '../../styles/common';
 
 const SuspectRegisterPage = () => {
   const handleSave: (values: IRegisterFormValues) => void = (
@@ -28,7 +29,7 @@ const SuspectRegisterPage = () => {
     >
       <Row>
         <Col>
-          <h2 className={'text-align-center'}>Registration Page</h2>
+          <Headline>Registration Page</Headline>
         </Col>
         <Col xs={12}>
           <hr />
